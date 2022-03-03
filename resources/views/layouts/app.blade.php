@@ -34,12 +34,15 @@
     <link href="{{asset('backend')}}/css/style.css" rel="stylesheet">
     <!-- You can change the theme colors from here -->
     <link href="{{asset('backend')}}/css/colors/blue.css" id="theme" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css" integrity="sha512-3pIirOrwegjM6erE5gPSwkUzO+3cTjpnV9lexlNZqvupR64iZBnOOTiiLPb9M36zpMScbmUNIcHUqKD47M719g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
     <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
 <![endif]-->
+@yield("styles")
 </head>
 
 <body class="fix-header fix-sidebar card-no-border">
@@ -76,7 +79,14 @@
                 <!-- ============================================================== -->
                 <!-- Bread crumb and right sidebar toggle -->
                 <!-- ============================================================== -->
-                @include("partials.breadcrumb")
+                
+                <div class="row page-titles">
+                    <div class="col-md-5 col-8 align-self-center">
+                        <ol class="breadcrumb">
+                            @yield("breadcrumb")
+                        </ol>
+                    </div>
+                </div>
                 <!-- ============================================================== -->
                 <!-- End Bread crumb and right sidebar toggle -->
                 <!-- ============================================================== -->
@@ -138,6 +148,45 @@
     <script src="{{asset('backend')}}/assets/plugins/c3-master/c3.min.js"></script>
     <!-- Chart JS -->
     <script src="{{asset('backend')}}/js/dashboard1.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js" integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+   
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+@if(Session::has('message'))
+	<script>
+        Swal.fire({
+            position: 'top-center',
+            icon: "{{Session::get('type')}}",
+            title: "{{Session::get('message')}}",
+            showConfirmButton: false,
+            timer: 1500
+        })
+	</script>
+@endif
+	<script>
+		function confirmDelete(event){
+			Swal.fire({
+			title: 'Are you sure?',
+			text: "You won't be able to revert this!",
+			icon: 'warning',
+			showCancelButton: true,
+			confirmButtonColor: '#3085d6',
+			cancelButtonColor: '#d33',
+			confirmButtonText: 'Yes, delete it!'
+			}).then((result) => {
+			if (result.isConfirmed) {
+				location.href=event.target.dataset['link']
+				Swal.fire(
+				'Deleted!',
+				'Your file has been deleted.',
+				'success'
+				)
+			}
+		})
+		}
+	</script>
+    @yield('scripts')
+
+
 </body>
 
 </html>

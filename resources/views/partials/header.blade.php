@@ -42,9 +42,11 @@
                     <!-- ============================================================== -->
                     <!-- Profile -->
                     <!-- ============================================================== -->
+                    @auth
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="{{asset('backend')}}/assets/images/users/1.jpg" alt="user" class="profile-pic m-r-10" />Markarn Doe</a>
+                        <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="{{asset(auth()->user()->image)}}" alt="user" class="profile-pic m-r-10" />{{auth()->user()->name}}</a>
                     </li>
+                    @endauth
                 </ul>
             </div>
         </nav>
