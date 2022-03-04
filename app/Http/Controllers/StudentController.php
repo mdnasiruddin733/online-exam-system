@@ -43,7 +43,12 @@ class StudentController extends Controller
     public function changeProfileImage(Request $req){
         $student=Student::find(Auth::id());
         if($req->image){
-            $student->image=upload($req->image,"profile-images",$student->image);
+            if($student->image==="img/student.png"){
+                 $student->image=upload($req->image,"profile-images");
+            }else{
+                 $student->image=upload($req->image,"profile-images",$student->image);
+            }
+           
             $student->save();
         }
 

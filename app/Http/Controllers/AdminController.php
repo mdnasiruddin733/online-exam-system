@@ -41,7 +41,12 @@ class AdminController extends Controller
     public function changeProfileImage(Request $req){
         $admin=Admin::find(Auth::id());
         if($req->image){
-            $admin->image=upload($req->image,"profile-images",$admin->image);
+            if($admin->image==="img/admin.png"){
+                 $admin->image=upload($req->image,"profile-images");
+            }else{
+                 $admin->image=upload($req->image,"profile-images",$admin->image);
+            }
+           
             $admin->save();
         }
 

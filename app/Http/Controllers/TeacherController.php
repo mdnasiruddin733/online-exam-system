@@ -40,7 +40,12 @@ class TeacherController extends Controller
     public function changeProfileImage(Request $req){
         $teacher=Teacher::find(Auth::id());
         if($req->image){
-            $teacher->image=upload($req->image,"profile-images",$teacher->image);
+            if($teacher->image==="img/teacher.png"){
+                 $teacher->image=upload($req->image,"profile-images");
+            }else{
+                 $teacher->image=upload($req->image,"profile-images",$teacher->image);
+            }
+           
             $teacher->save();
         }
 

@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string("name");
             $table->string("email");
             $table->string("phone")->nullable();
-            $table->string("image")->default("img/student-avatar.png");
+            $table->string("image")->default("img/student.png");
             $table->string("department");
             $table->string("roll");
             $table->string("password");
