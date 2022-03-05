@@ -79,7 +79,7 @@ class AdminController extends Controller
         return redirect(route("admin.profile"))->with([
           "type"=>"success",
           "message"=>"Password changed successfully"
-      ]);
+        ]);
 
     
     }

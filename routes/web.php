@@ -3,6 +3,7 @@
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\DepartmentController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\TeacherController;
 use Illuminate\Support\Facades\Route;
@@ -46,15 +47,24 @@ Route::get("/dashboard/student",[StudentController::class,"index"])->name("dashb
 Route::get("/dashboard/teacher",[TeacherController::class,"index"])->name("dashboard.teacher");
 Route::get("/dashboard/admin",[AdminController::class,"index"])->name("dashboard.admin");
 
-
+/*=============================Admin Routes==============================*/
 Route::group(["middleware"=>["auth:admin"],"as"=>"admin.","prefix"=>"/admin"],function(){
     Route::get("/profile",[AdminController::class,"showProfile"])->name("profile");
     Route::post("/profile/update",[AdminController::class,"updateProfile"])->name("update-profile");
     Route::post("/profile/change-profile-image",[AdminController::class,"changeProfileImage"])->name("change-profile-image");
     Route::get("/profile/change-password",[AdminController::class,"showChangePasswordForm"])->name("change-password");
     Route::post("/profile/change-password",[AdminController::class,"changePassword"])->name("change-password");
+  
+    /*=============================Departments Routes==============================*/
+    Route::get("/departments",[DepartmentController::class,"index"])->name("department.index");
+    Route::get("/department/create",[DepartmentController::class,"create"])->name("department.create");
+    Route::post("/department/store",[DepartmentController::class,"store"])->name("department.store");
+    Route::get("/department/edit/{id}",[DepartmentController::class,"edit"])->name("department.edit");
+    Route::post("/department/update",[DepartmentController::class,"update"])->name("department.update");
+    Route::get("/department/delete/{id}",[DepartmentController::class,"delete"])->name("department.delete");
 });
 
+/*=============================Student Routes==============================*/
 Route::group(["middleware"=>["auth:student"],"as"=>"student.","prefix"=>"/student"],function(){
     Route::get("/profile",[StudentController::class,"showProfile"])->name("profile");
     Route::post("/profile/update",[StudentController::class,"updateProfile"])->name("update-profile");
@@ -64,6 +74,8 @@ Route::group(["middleware"=>["auth:student"],"as"=>"student.","prefix"=>"/studen
 });
 
 
+
+/*=============================Teacher Routes==============================*/
 Route::group(["middleware"=>["auth:teacher"],"as"=>"teacher.","prefix"=>"/teacher"],function(){
     Route::get("/profile",[TeacherController::class,"showProfile"])->name("profile");
     Route::post("/profile/update",[TeacherController::class,"updateProfile"])->name("update-profile");

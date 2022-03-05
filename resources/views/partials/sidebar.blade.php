@@ -8,6 +8,10 @@
                         </li>
                         <li> <a class="waves-effect waves-dark" href="{{route(guard().".profile")}}" aria-expanded="false"><i class="mdi mdi-account-check"></i><span class="hide-menu">Profile</span></a>
                         </li>
+                        @admin
+                         <li> <a class="waves-effect waves-dark" href="{{route("admin.department.index")}}" aria-expanded="false"><i class="mdi mdi-group"></i><span class="hide-menu">Departments</span></a>
+                        </li>
+                        @endadmin
                     </ul>
                 </nav>
                 <!-- End Sidebar navigation -->
