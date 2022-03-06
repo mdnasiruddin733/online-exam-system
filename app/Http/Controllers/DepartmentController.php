@@ -56,7 +56,7 @@ class DepartmentController extends Controller
             }
            
         }
-       
+        $department->name=$req->name;
         $department->save();
         return redirect(route("admin.department.index"))->with([
           "type"=>"success",
