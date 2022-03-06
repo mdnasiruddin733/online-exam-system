@@ -19,7 +19,8 @@ return new class extends Migration
             $table->string("email");
             $table->string("phone")->nullable();
             $table->string("image")->default("img/teacher.png");
-            $table->string("department");
+            $table->unsignedBigInteger("department_id");
+            $table->foreign("department_id")->references("id")->on("departments")->onDelete(("cascade"));
             $table->string("password");
             $table->timestamps();
         });

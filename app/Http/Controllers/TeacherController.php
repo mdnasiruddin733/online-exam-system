@@ -67,6 +67,10 @@ class TeacherController extends Controller
         if($req->password_confirmation===$req->new_password){
             $teacher->password=bcrypt($req->new_password);
             $teacher->save();
+            return back()->with([
+                "type"=>"success",
+                "message"=>"Password changed successfully"
+            ]);
         }else{
             return back()->with([
                 "type"=>"error",

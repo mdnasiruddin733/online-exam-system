@@ -11,6 +11,11 @@
                         @admin
                          <li> <a class="waves-effect waves-dark" href="{{route("admin.department.index")}}" aria-expanded="false"><i class="mdi mdi-group"></i><span class="hide-menu">Departments</span></a>
                         </li>
+                        <li> <a class="waves-effect waves-dark" href="{{route("admin.teacher.index")}}" aria-expanded="false"><i class="mdi mdi-account-star"></i><span class="hide-menu">Teachers</span></a>
+                        </li>
+                        <li> <a class="waves-effect waves-dark" href="{{route("admin.student.index")}}" aria-expanded="false"><i class="mdi mdi-school"></i><span class="hide-menu">Students</span></a>
+                        </li>
+                        
                         @endadmin
                     </ul>
                 </nav>

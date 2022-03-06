@@ -28,6 +28,11 @@
                         <label class="col-md-4">Department Name</label>
                         <div class="col-md-8">
                             <input type="text" placeholder="" class="form-control form-control-line" name="name">
+                             @error("name")
+                            <span class="invalid-feed-back" role="alert">
+                                <strong class="text-danger">{{$message}}</strong>
+                            </span>
+                            @enderror
                         </div>
                     </div>
                     
@@ -35,6 +40,11 @@
                         <label for="" class="col-md-4">Department Image</label>
                         <div class="col-md-8">
                             <input type="file" accept="image/*" id="image-input"  name="image" class="form-control form-control-line">
+                            @error("image")
+                            <span class="invalid-feed-back" role="alert">
+                                <strong class="text-danger">{{$message}}</strong>
+                            </span>
+                            @enderror
                         </div>
                     </div>
                     

@@ -12,4 +12,7 @@ class Student extends  Authenticatable
     use HasApiTokens, HasFactory, Notifiable;
     protected $guarded=[];
     protected $guard="student";
+    public function department(){
+        return $this->belongsTo(Department::class);
+    }
 }

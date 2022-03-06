@@ -12,4 +12,7 @@ class Teacher extends  Authenticatable
     use HasApiTokens, HasFactory, Notifiable;
     protected $guarded=[];
     protected $guard="teacher";
+    public function department(){
+        return $this->belongsTo(Department::class);
+    }
 }

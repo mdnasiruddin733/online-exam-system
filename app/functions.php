@@ -1,4 +1,6 @@
 <?php
+
+use App\Models\Department;
 use Illuminate\Support\Facades\Auth;
 function guard(){
     if(Auth::guard('admin')->check())
@@ -17,4 +19,9 @@ function upload($image,$folder,$prev_image=""){
     $filename=uniqid(time()).".".$image->getClientOriginalExtension();
     $image->storeAs($folder,$filename,"public");
     return "storage/".$folder."/".$filename;
+}
+
+
+function departments(){
+    return Department::latest()->get();
 }

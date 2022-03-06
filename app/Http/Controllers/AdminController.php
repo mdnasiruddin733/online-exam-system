@@ -68,6 +68,10 @@ class AdminController extends Controller
         if($req->password_confirmation===$req->new_password){
             $admin->password=bcrypt($req->new_password);
             $admin->save();
+            return back()->with([
+                "type"=>"success",
+                "message"=>"Password changed successfully"
+            ]);
         }else{
             return back()->with([
                 "type"=>"error",

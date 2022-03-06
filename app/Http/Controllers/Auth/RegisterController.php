@@ -77,13 +77,13 @@ class RegisterController extends Controller
             'email' => ['required', 'string', 'email', 'max:255', 'unique:students'],
             'password' => ['required', 'string', 'min:6', 'confirmed'],
             "phone"=>["required","string"],
-            "department"=>["required"]
+            "department_id"=>["required"]
         ]);
         Teacher::create([
             'name' => $req->name,
             'email' => $req->email,
             'phone' => $req->phone,
-            'department' => $req->department,
+            'department_id' => $req->department_id,
             'password' => Hash::make($req->password),
         ]);
         return redirect(route("login.teacher"));
@@ -95,14 +95,15 @@ class RegisterController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:students'],
             'password' => ['required', 'string', 'min:6', 'confirmed'],
-            "phone"=>["required","string"]
+            "phone"=>["required","string"],
+            "department_id"=>"required"
         ]);
         Student::create([
             'name' => $req->name,
             'email' => $req->email,
             'phone' => $req->phone,
             'roll' => $req->roll,
-            'department' => $req->department,
+            'department_id' => $req->department_id,
             'password' => Hash::make($req->password),
         ]);
        return redirect(route("login.student"));

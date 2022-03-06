@@ -11,7 +11,7 @@
     <div class="col-lg-12 col-xlg-12 col-md-12">
         <div class="card">
             <div class="card-block">
-                <form class="form-horizontal form-material" method="POST" action="{{route("admin.change-password")}}">
+                <form class="form-horizontal form-material" method="POST" action="{{route("teacher.change-password")}}">
                     @csrf
                     <div class="form-group row">
                         <label class="col-md-3">Current Password</label>

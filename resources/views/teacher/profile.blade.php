@@ -12,7 +12,7 @@
                 <input type="file" accept="image/*" id="image-input" style="display:none;">
                 <center class="m-t-30"> <img src="{{asset(auth()->user()->image)}}" class="img-circle" width="150" id="profile-image">
                     <h4 class="card-title m-t-10">Name:&nbsp;{{auth()->user()->name}}</h4>
-                    <h6 class="card-subtitle">Role:&nbsp;{{guard()}}</h6>
+                   <h6 class="card-subtitle">Department:&nbsp;{{auth()->user()->department->name}}</h6>
                     <button class="btn btn-primary btn-block" id="change-image">Change Profile Image</button>
                    
                     <a href="{{route('teacher.change-password')}}" class="btn btn-primary btn-block text-white">Change Password </a>
