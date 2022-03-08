@@ -20,7 +20,7 @@ class ManageTeacherController extends Controller
     public function store(Request $req){
          $this->validate($req, [
             'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:students'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:teachers'],
             "phone"=>["required","string"],
             "department_id"=>["required"]
         ]);

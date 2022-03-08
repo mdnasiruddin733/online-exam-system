@@ -1,6 +1,6 @@
 @component('mail::message')
-# Introduction
-<h3 style="text-align: center">Your student account is created successfully.</h3>
+<h3>Hi {{$data['name']}},</h3>
+<p>Welcome to Online Exam System. Your teacher account created successfully. Here is your credentials.</p>
 <p>Your Email: <strong>{{$data['email']}}</strong></p>
 <p>Your Password: <strong>{{$data['password']}}</strong></p>
 @component('mail::button', ['url' =>$data['url']])

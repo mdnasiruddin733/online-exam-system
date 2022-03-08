@@ -10,7 +10,7 @@
         <div class="card">
             <div class="card-header"><a href="{{route('admin.department.create')}}" class="btn btn-success">Create New Department</a></div>
             <div class="card-block table-responsive text-center">
-                <table class="table table-bordered">
+                <table class="table table-bordered" id="data-table">
                     <thead>
                         <tr>
                             <th>SL.</th>
@@ -43,5 +43,6 @@
 @section("scripts")
 <script>
    
+$('#data-table').DataTable();
 </script>
 @endsection
