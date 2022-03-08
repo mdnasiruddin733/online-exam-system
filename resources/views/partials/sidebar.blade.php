@@ -17,6 +17,18 @@
                         </li>
                         
                         @endadmin
+
+                        @teacher 
+                        <li> <a class="waves-effect waves-dark" href="{{route("teacher.course.index")}}" aria-expanded="false"><i class="mdi mdi-book"></i><span class="hide-menu">Courses</span></a>
+                        </li>
+                        @endteacher
+
+                        @student
+                        <li> <a class="waves-effect waves-dark" href="{{route("student.course.index")}}" aria-expanded="false"><i class="mdi mdi-book"></i><span class="hide-menu">Offered Courses</span></a>
+                        </li>
+                        <li> <a class="waves-effect waves-dark" href="{{route("student.course.enrolled-course")}}" aria-expanded="false"><i class="mdi mdi-book"></i><span class="hide-menu">Enrolled Courses</span></a>
+                        </li>
+                        @endstudent
                     </ul>
                 </nav>
                 <!-- End Sidebar navigation -->

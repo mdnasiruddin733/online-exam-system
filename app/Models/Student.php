@@ -15,4 +15,8 @@ class Student extends  Authenticatable
     public function department(){
         return $this->belongsTo(Department::class);
     }
+
+    public function courses(){
+        return $this->belongsToMany(Course::class,"course_student");
+    }
 }

@@ -10,16 +10,8 @@ use App\Http\Controllers\TeacherController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\ManageStudentController;
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
+use App\Http\Controllers\CourseController;
+use App\Http\Controllers\CourseControllerForStudent;
 
 Route::get('/', function () {
     return view('welcome');
@@ -81,6 +73,8 @@ Route::group(["middleware"=>["auth:admin"],"as"=>"admin.","prefix"=>"/admin"],fu
     Route::get("/student/edit/{id}",[ManageStudentController::class,"edit"])->name("student.edit");
     Route::post("/student/update",[ManageStudentController::class,"update"])->name("student.update");
     Route::get("/student/delete/{id}",[ManageStudentController::class,"delete"])->name("student.delete");
+
+
 });
 
 /*=============================Student Routes==============================*/
@@ -90,6 +84,12 @@ Route::group(["middleware"=>["auth:student"],"as"=>"student.","prefix"=>"/studen
     Route::post("/profile/change-profile-image",[StudentController::class,"changeProfileImage"])->name("change-profile-image");
     Route::get("/profile/change-password",[StudentController::class,"showChangePasswordForm"])->name("change-password");
     Route::post("/profile/change-password",[StudentController::class,"changePassword"])->name("change-password");
+
+    /*=============================Course CRUD by Teacher==============================*/
+    Route::get("/courses",[CourseControllerForStudent::class,"index"])->name("course.index");
+    Route::post("/course/add",[CourseControllerForStudent::class,"addCourses"])->name("courses.add");
+    Route::get("/course/enrolled-course",[CourseControllerForStudent::class,"enrolledCourses"])->name("course.enrolled-course");
+    
 });
 
 
@@ -103,4 +103,12 @@ Route::group(["middleware"=>["auth:teacher"],"as"=>"teacher.","prefix"=>"/teache
     Route::post("/profile/change-profile-image",[TeacherController::class,"changeProfileImage"])->name("change-profile-image");
     Route::get("/profile/change-password",[TeacherController::class,"showChangePasswordForm"])->name("change-password");
     Route::post("/profile/change-password",[TeacherController::class,"changePassword"])->name("change-password");
+
+    /*=============================Course CRUD by Teacher==============================*/
+    Route::get("/courses",[CourseController::class,"index"])->name("course.index");
+    Route::get("/course/create",[CourseController::class,"create"])->name("course.create");
+    Route::post("/course/store",[CourseController::class,"store"])->name("course.store");
+    Route::get("/course/edit/{id}",[CourseController::class,"edit"])->name("course.edit");
+    Route::post("/course/update",[CourseController::class,"update"])->name("course.update");
+    Route::get("/course/delete/{id}",[CourseController::class,"delete"])->name("course.delete");
 });
