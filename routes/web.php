@@ -13,6 +13,8 @@ use App\Http\Controllers\ManageStudentController;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\CourseControllerForStudent;
 use App\Http\Controllers\ExamController;
+use App\Http\Controllers\QuestionController;
+
 Route::get('/', function () {
     return view('welcome');
 });
@@ -121,4 +123,14 @@ Route::group(["middleware"=>["auth:teacher"],"as"=>"teacher.","prefix"=>"/teache
     Route::get("/exam/edit/{id}",[ExamController::class,"edit"])->name("exam.edit");
     Route::post("/exam/update",[ExamController::class,"update"])->name("exam.update");
     Route::get("/exam/delete/{id}",[ExamController::class,"delete"])->name("exam.delete");
+
+    /*=============================Questions CRUD==============================*/
+    Route::get("/questions/{exam_id}",[ExamController::class,"showQuestions"])->name("questions");
+    Route::get("/setquestions/{exam_id}",[QuestionController::class,"index"])->name("setquestions");
+    Route::get("/question/create/{id}",[QuestionController::class,"create"])->name("question.create");
+    Route::post("/question/store",[QuestionController::class,"store"])->name("question.store");
+    Route::get("/question/edit/{id}",[QuestionController::class,"edit"])->name("question.edit");
+    Route::post("/question/update",[QuestionController::class,"update"])->name("question.update");
+    Route::get("/question/delete/{id}",[QuestionController::class,"delete"])->name("question.delete");
+
 });

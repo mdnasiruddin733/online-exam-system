@@ -78,4 +78,9 @@ class ExamController extends Controller
             "message"=>"Exam deleted successfully"
         ]);
         }
+
+        public function showQuestions($exam_id){
+            $exam=Exam::findOrFail($exam_id);
+            return view("teacher.exams.questions",compact('exam'));
+        }
 }

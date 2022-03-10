@@ -14,7 +14,7 @@
 
     </div>
     @foreach ($course->exams as $exam)
-    <div class="col-lg-6 col-xlg-6 col-md-6">
+    <div class="col-lg-12 col-xlg-12 col-md-12">
         <div class="card card-block card-info">
            
                 <h2  style="color:#fff;">Exam on: {{$exam->title}}</h2>
@@ -26,11 +26,14 @@
                <p><strong>Start Time:&nbsp;</strong>{{date("d M, Y H:i A",strtotime($exam->started_at))}}</p>
                <p><strong>End Time:&nbsp;</strong>{{date("d M, Y H:i A",strtotime($exam->ended_at))}}</p>
                <div class="row">
-                   <div class="col-md-4 mb-2">
-                       <a href="" class="btn btn-secondary btn-block">Set Question</a>
+                   <div class="col-md-3 mb-2">
+                       <a href="{{route('teacher.setquestions',$exam->id)}}" class="btn btn-secondary btn-block">Set Question</a>
                    </div>
-                   <div class="col-md-4 mb-2"> <a href="{{route('teacher.exam.edit',$exam->id)}}" class="btn btn-warning btn-block">Edit</a></div>
-                   <div class="col-md-4 mb-2"><button onclick="confirm('Do you want to delete it?') ? location.href='{{route('teacher.exam.delete',$exam->id)}}' :'' " class="btn btn-danger btn-block">Delete</button></div>
+                   <div class="col-md-3 mb-2">
+                       <a href="{{route('teacher.questions',$exam->id)}}" class="btn btn-secondary btn-block">Show Questions</a>
+                   </div>
+                   <div class="col-md-3 mb-2"> <a href="{{route('teacher.exam.edit',$exam->id)}}" class="btn btn-warning btn-block">Edit</a></div>
+                   <div class="col-md-3 mb-2"><button onclick="confirm('Do you want to delete it?') ? location.href='{{route('teacher.exam.delete',$exam->id)}}' :'' " class="btn btn-danger btn-block">Delete</button></div>
                </div>
             </div>
         </div>
