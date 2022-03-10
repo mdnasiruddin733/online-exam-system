@@ -21,6 +21,7 @@
                         @teacher 
                         <li> <a class="waves-effect waves-dark" href="{{route("teacher.course.index")}}" aria-expanded="false"><i class="mdi mdi-book"></i><span class="hide-menu">Courses</span></a>
                         </li>
+                        
                         @endteacher
 
                         @student

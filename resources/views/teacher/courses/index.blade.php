@@ -16,6 +16,7 @@
                             <th>SL.</th>
                             <th>Name</th>
                             <th>Code</th>
+                            <th>Exam</th>
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -25,6 +26,8 @@
                             <td style="line-height:80px;">{{++$key}}</td>
                             <td style="line-height:80px;">{{$course->name}}</td>
                             <td style="line-height:80px;">{{$course->code}}</td>
+                            <td style="line-height:80px;">
+                                <a href="{{route('teacher.exam.index',$course->id)}}" class="btn btn-primary">Manage Exam</a>
                             <td style="line-height:80px;">
                                 <a href="{{route('teacher.course.edit',$course->id)}}" class="btn btn-primary">Edit</a>
                                 <button class="btn btn-danger" onclick="confirm('Do you want to delete it?')? location.href='{{route('teacher.course.delete',$course->id)}}':''">Delete</button>

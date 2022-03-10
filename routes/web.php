@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\ManageStudentController;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\CourseControllerForStudent;
-
+use App\Http\Controllers\ExamController;
 Route::get('/', function () {
     return view('welcome');
 });
@@ -74,6 +74,8 @@ Route::group(["middleware"=>["auth:admin"],"as"=>"admin.","prefix"=>"/admin"],fu
     Route::post("/student/update",[ManageStudentController::class,"update"])->name("student.update");
     Route::get("/student/delete/{id}",[ManageStudentController::class,"delete"])->name("student.delete");
 
+    
+
 
 });
 
@@ -111,4 +113,12 @@ Route::group(["middleware"=>["auth:teacher"],"as"=>"teacher.","prefix"=>"/teache
     Route::get("/course/edit/{id}",[CourseController::class,"edit"])->name("course.edit");
     Route::post("/course/update",[CourseController::class,"update"])->name("course.update");
     Route::get("/course/delete/{id}",[CourseController::class,"delete"])->name("course.delete");
+
+    /*=============================Exam CRUD==============================*/
+    Route::get("/exams/{id}",[ExamController::class,"index"])->name("exam.index");
+    Route::get("/exam/create/{id}",[ExamController::class,"create"])->name("exam.create");
+    Route::post("/exam/store",[ExamController::class,"store"])->name("exam.store");
+    Route::get("/exam/edit/{id}",[ExamController::class,"edit"])->name("exam.edit");
+    Route::post("/exam/update",[ExamController::class,"update"])->name("exam.update");
+    Route::get("/exam/delete/{id}",[ExamController::class,"delete"])->name("exam.delete");
 });
