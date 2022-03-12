@@ -27,4 +27,14 @@ class CourseControllerForStudent extends Controller
     public function enrolledCourses(){
         return view("student.courses.enrolled-courses");
     }
+
+    public function show($id){
+        if(Student::findOrFail(Auth::id())->hasCourse($id)){
+            $course=Course::findOrFail($id);
+             return view("student.courses.show",compact("course"));
+        }else{
+            abort(404,"Course is not found");
+        }
+       
+    }
 }

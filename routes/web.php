@@ -13,6 +13,7 @@ use App\Http\Controllers\ManageStudentController;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\CourseControllerForStudent;
 use App\Http\Controllers\ExamController;
+use App\Http\Controllers\ExamControllerForStudent;
 use App\Http\Controllers\QuestionController;
 
 Route::get('/', function () {
@@ -93,6 +94,11 @@ Route::group(["middleware"=>["auth:student"],"as"=>"student.","prefix"=>"/studen
     Route::get("/courses",[CourseControllerForStudent::class,"index"])->name("course.index");
     Route::post("/course/add",[CourseControllerForStudent::class,"addCourses"])->name("courses.add");
     Route::get("/course/enrolled-course",[CourseControllerForStudent::class,"enrolledCourses"])->name("course.enrolled-course");
+    Route::get("/course/show/{id}",[CourseControllerForStudent::class,"show"])->name("course.show");
+
+    Route::get("/exam/participate/{id}",[ExamControllerForStudent::class,"participate"])->name("exam.participate")->middleware("examGiven");
+    Route::post("/exam/submit",[ExamControllerForStudent::class,"submit"])->name("exam.submit");
+    Route::get("/exam/view-result/{exam_id}",[ExamControllerForStudent::class,"viewResult"])->name("exam.view-result")->middleware("resultMiddleware");
     
 });
 

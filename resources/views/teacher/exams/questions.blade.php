@@ -16,7 +16,7 @@
                         <li class="{{$question->answer==1?"text-success":""}}">{!! $question->option_1!!}</li>
                         <li class="{{$question->answer==2?"text-success":""}}">{!! $question->option_2!!}</li>
                         <li class="{{$question->answer==3?"text-success":""}}">{!! $question->option_3!!}</li>
-                        <li class="{{$question->answer==3?"text-success":""}}">{!! $question->option_4!!}</li>
+                        <li class="{{$question->answer==4?"text-success":""}}">{!! $question->option_4!!}</li>
                     </ol>
                 <p><strong>Answer:&nbsp;{{['A','B','C','D'][ $question->answer-1]}} &nbsp;||&nbsp; Marks: {{$question->marks}}</strong></p>
                 <div class="row">
@@ -36,7 +36,6 @@
 
 @section("scripts")
 <script>
-   
-$('#data-table').DataTable();
+    $('#data-table').DataTable();
 </script>
 @endsection

@@ -8,7 +8,7 @@
 <div class="row">
     @foreach(auth()->user()->courses as $course)
     <div class="col-lg-3 col-xlg-3 col-md-3">
-        <a href="">
+        <a href="{{route('student.course.show',$course->id)}}">
         <div class="card">
             <div class="card-block" style="height:180px;">
                <center><strong style="color:hsl(332, 100%, 50%);">{{$course->code}}</strong></center>
