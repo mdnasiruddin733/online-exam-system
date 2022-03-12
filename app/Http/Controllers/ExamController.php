@@ -8,8 +8,8 @@ use App\Models\Exam;
 use Illuminate\Support\Facades\Auth;
 class ExamController extends Controller
 {
-    public function index($id){
-            $course=Course::findOrFail($id);
+    public function index($course_id){
+            $course=Course::findOrFail($course_id);
             return view("teacher.exams.index",compact('course'));
         }
 
@@ -81,6 +81,11 @@ class ExamController extends Controller
 
         public function showQuestions($exam_id){
             $exam=Exam::findOrFail($exam_id);
-            return view("teacher.exams.questions",compact('exam'));
+            if($exam->type=="mcq"){
+                 return view("teacher.exams.questions",compact('exam'));
+            }else{
+                 return view("teacher..questions.show-cq",compact('exam'));
+            }
+           
         }
 }

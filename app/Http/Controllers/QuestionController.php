@@ -10,7 +10,12 @@ class QuestionController extends Controller
 {
     public function index($exam_id){
         $exam=Exam::findOrFail($exam_id);
-        return view("teacher.questions.index",compact('exam'));
+        if($exam->type=="mcq"){
+              return view("teacher.questions.index",compact('exam'));
+        }else{
+            return view("teacher.questions.create-cq",compact('exam'));
+        }
+      
     }
 
     public function store(Request $req){

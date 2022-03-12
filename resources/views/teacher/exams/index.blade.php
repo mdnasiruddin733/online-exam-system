@@ -16,12 +16,11 @@
     @foreach ($course->exams as $exam)
     <div class="col-lg-12 col-xlg-12 col-md-12">
         <div class="card card-block card-info">
-           
                 <h2  style="color:#fff;">Exam on: {{$exam->title}}</h2>
-           
             <div class="card-body text-white">
                 <p><strong>Course Code:&nbsp;</strong>{{$exam->course->code}}</p>
                 <p><strong>Course Name:&nbsp;</strong>{{$exam->course->name}}</p>
+                <p><strong>Exam Type:&nbsp;</strong>{{$exam->type}}</p>
                <p><strong>Exam Instructions:&nbsp;</strong>{{$exam->instructions}}</p>
                <p><strong>Start Time:&nbsp;</strong>{{date("d M, Y H:i A",strtotime($exam->started_at))}}</p>
                <p><strong>End Time:&nbsp;</strong>{{date("d M, Y H:i A",strtotime($exam->ended_at))}}</p>

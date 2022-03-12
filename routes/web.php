@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\ManageStudentController;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\CourseControllerForStudent;
+use App\Http\Controllers\CQController;
 use App\Http\Controllers\ExamController;
 use App\Http\Controllers\ExamControllerForStudent;
 use App\Http\Controllers\QuestionController;
@@ -123,7 +124,7 @@ Route::group(["middleware"=>["auth:teacher"],"as"=>"teacher.","prefix"=>"/teache
     Route::get("/course/delete/{id}",[CourseController::class,"delete"])->name("course.delete");
 
     /*=============================Exam CRUD==============================*/
-    Route::get("/exams/{id}",[ExamController::class,"index"])->name("exam.index");
+    Route::get("/exams/{course_id}",[ExamController::class,"index"])->name("exam.index");
     Route::get("/exam/create/{id}",[ExamController::class,"create"])->name("exam.create");
     Route::post("/exam/store",[ExamController::class,"store"])->name("exam.store");
     Route::get("/exam/edit/{id}",[ExamController::class,"edit"])->name("exam.edit");
@@ -139,4 +140,8 @@ Route::group(["middleware"=>["auth:teacher"],"as"=>"teacher.","prefix"=>"/teache
     Route::post("/question/update",[QuestionController::class,"update"])->name("question.update");
     Route::get("/question/delete/{id}",[QuestionController::class,"delete"])->name("question.delete");
 
+    Route::post("/cq/store/",[CQController::class,"store"])->name("cq.store");
+    Route::get("/cq/edit/{exam_id}",[CQController::class,"edit"])->name("cq.edit");
+    Route::post("/cq/update/",[CQController::class,"update"])->name("cq.update");
+    Route::get("/cq/delete/{exam_id}",[CQController::class,"delete"])->name("cq.delete");
 });
