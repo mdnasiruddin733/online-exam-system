@@ -144,4 +144,6 @@ Route::group(["middleware"=>["auth:teacher"],"as"=>"teacher.","prefix"=>"/teache
     Route::get("/cq/edit/{exam_id}",[CQController::class,"edit"])->name("cq.edit");
     Route::post("/cq/update/",[CQController::class,"update"])->name("cq.update");
     Route::get("/cq/delete/{exam_id}",[CQController::class,"delete"])->name("cq.delete");
+
+    Route::get("exam/result/{exam_id}",[ExamController::class,"showResult"])->name("exam.result");
 });

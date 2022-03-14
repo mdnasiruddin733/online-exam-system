@@ -18,7 +18,7 @@ class Exam extends Model
     }
 
      public function students(){
-          return $this->belongsToMany(Student::class,"exam_student");
+          return $this->belongsToMany(Student::class,"exam_student")->withPivot('marks','rank','submitted_at');
     }
     public function cq(){
         return $this->hasOne(CQ::class);

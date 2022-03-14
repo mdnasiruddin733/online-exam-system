@@ -88,4 +88,10 @@ class ExamController extends Controller
             }
            
         }
+
+        public function showResult($exam_id){
+            $exam=Exam::findOrFail($exam_id);
+            return view("teacher.exams.result",compact('exam'));
+            
+        }
 }

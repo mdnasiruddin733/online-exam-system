@@ -24,15 +24,21 @@
                <p><strong>Exam Instructions:&nbsp;</strong>{{$exam->instructions}}</p>
                <p><strong>Start Time:&nbsp;</strong>{{date("d M, Y H:i A",strtotime($exam->started_at))}}</p>
                <p><strong>End Time:&nbsp;</strong>{{date("d M, Y H:i A",strtotime($exam->ended_at))}}</p>
+               
                <div class="row">
-                   <div class="col-md-3 mb-2">
+                   <div class="col-md-2 mb-2">
                        <a href="{{route('teacher.setquestions',$exam->id)}}" class="btn btn-secondary btn-block">Set Question</a>
                    </div>
-                   <div class="col-md-3 mb-2">
+                    @if(strtotime($exam->ended_at)<strtotime(now()))
+                    <div class="col-md-2 mb-2">
+                        <a href="{{route('teacher.exam.result',$exam->id)}}" class="btn btn-primary" style="background-color:#1eff00;!important">Show Result</a>
+                    </div>
+                    @endif
+                   <div class="col-md-2 mb-2">
                        <a href="{{route('teacher.questions',$exam->id)}}" class="btn btn-secondary btn-block">Show Questions</a>
                    </div>
-                   <div class="col-md-3 mb-2"> <a href="{{route('teacher.exam.edit',$exam->id)}}" class="btn btn-warning btn-block">Edit</a></div>
-                   <div class="col-md-3 mb-2"><button onclick="confirm('Do you want to delete it?') ? location.href='{{route('teacher.exam.delete',$exam->id)}}' :'' " class="btn btn-danger btn-block">Delete</button></div>
+                   <div class="col-md-2 mb-2"> <a href="{{route('teacher.exam.edit',$exam->id)}}" class="btn btn-warning btn-block">Edit</a></div>
+                   <div class="col-md-2 mb-2"><button onclick="confirm('Do you want to delete it?') ? location.href='{{route('teacher.exam.delete',$exam->id)}}' :'' " class="btn btn-danger btn-block">Delete</button></div>
                </div>
             </div>
         </div>
