@@ -40,56 +40,12 @@ class RegisterController extends Controller
 
 
 
-    public function showStudentRegisterForm(){
-        return view("auth.register.student");
+    public function showRegisterForm(){
+        return view("auth.register");
     }
 
-    public function showTeacherRegisterForm(){
-        return view("auth.register.teacher");
-    }
-    public function showAdminRegisterForm(){
-        return view("auth.register.admin");
-    }
-    
 
-
-    protected function createAdmin(Request $req)
-    {
-         $this->validate($req, [
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:students'],
-            'password' => ['required', 'string', 'min:6', 'confirmed'],
-            "phone"=>["required","string"]
-        ]);
-        Admin::create([
-            'name' => $req->name,
-            'email' => $req->email,
-            'phone' => $req->phone,
-            'password' => Hash::make($req->password),
-        ]);
-        return redirect(route("login.admin"));
-    }
-
-    protected function createTeacher(Request $req)
-    {
-         $this->validate($req, [
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:students'],
-            'password' => ['required', 'string', 'min:6', 'confirmed'],
-            "phone"=>["required","string"],
-            "department_id"=>["required"]
-        ]);
-        Teacher::create([
-            'name' => $req->name,
-            'email' => $req->email,
-            'phone' => $req->phone,
-            'department_id' => $req->department_id,
-            'password' => Hash::make($req->password),
-        ]);
-        return redirect(route("login.teacher"));
-    }
-
-    protected function createStudent(Request $req)
+    protected function register(Request $req)
     {   
         $this->validate($req, [
             'name' => ['required', 'string', 'max:255'],

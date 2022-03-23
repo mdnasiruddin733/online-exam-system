@@ -16,12 +16,17 @@
                         <li> <a class="waves-effect waves-dark" href="{{route("admin.student.index")}}" aria-expanded="false"><i class="mdi mdi-school"></i><span class="hide-menu">Students</span></a>
                         </li>
                         @endadmin
+                        
+                        @teacher
                         <li> 
                             <a class="waves-effect waves-dark" href="{{route("teacher.course.index")}}" aria-expanded="false"><i class="mdi mdi-school"></i><span class="hide-menu">Courses</span></a>
                         </li>
-                        @teacher
-
                         @endteacher
+                        @student
+                        <li> 
+                            <a class="waves-effect waves-dark" href="{{route("student.course.index")}}" aria-expanded="false"><i class="mdi mdi-school"></i><span class="hide-menu">My Courses</span></a>
+                        </li>
+                        @endstudent
 
                     </ul>
                 </nav>

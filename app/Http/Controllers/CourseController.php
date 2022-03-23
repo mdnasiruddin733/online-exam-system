@@ -119,4 +119,8 @@ class CourseController extends Controller
           "message"=>"All enrollment removed successfully"
       ]);
     }
+
+    public function showMyCourses(){
+        return view("student.courses.index");
+    }
 }

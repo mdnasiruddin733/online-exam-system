@@ -23,16 +23,9 @@ use App\Http\Controllers\CourseController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect(route('login.student'));
 });
 Auth::routes();
-Route::get("/register/student",[RegisterController::class,"showStudentRegisterForm"]);
-Route::get("/register/teacher",[RegisterController::class,"showTeacherRegisterForm"]);
-Route::get("/register/admin",[RegisterController::class,"showAdminRegisterForm"]);
-
-Route::post("/register/student",[RegisterController::class,"createStudent"])->name("register.student");
-Route::post("/register/teacher",[RegisterController::class,"createTeacher"])->name("register.teacher");
-Route::post("/register/admin",[RegisterController::class,"createAdmin"])->name("register.admin");
 
 
 Route::get("/login/student",[LoginController::class,"showStudentLoginForm"])->name("login.student");
@@ -91,6 +84,8 @@ Route::group(["middleware"=>["auth:student"],"as"=>"student.","prefix"=>"/studen
     Route::post("/profile/change-profile-image",[StudentController::class,"changeProfileImage"])->name("change-profile-image");
     Route::get("/profile/change-password",[StudentController::class,"showChangePasswordForm"])->name("change-password");
     Route::post("/profile/change-password",[StudentController::class,"changePassword"])->name("change-password");
+    
+    Route::get("/courses",[CourseController::class,"showMyCourses"])->name("course.index");
 });
 
 
