@@ -43,7 +43,7 @@
                             <strong class="text-danger">{{$message}}</strong>
                         @else
                         <h2><i class="fa fa-upload d-block"></i></h2>
-                        <p>Drag and drop a file or Click</p>
+                        <p>Drag and drop a file or click</p>
                         @enderror
                     </label>
                     <input type="file" id="xl" class="file-upload" accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,application/vnd.ms-excel" name="xl"/>

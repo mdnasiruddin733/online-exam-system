@@ -12,13 +12,14 @@ use Maatwebsite\Excel\Concerns\SkipsFailures;
 use Maatwebsite\Excel\Concerns\SkipsOnError;
 use Maatwebsite\Excel\Concerns\SkipsOnFailure;
 use Maatwebsite\Excel\Concerns\ToModel;
+use Maatwebsite\Excel\Concerns\WithChunkReading;
 use Maatwebsite\Excel\Concerns\WithHeadingRow;
 use Maatwebsite\Excel\Concerns\WithValidation;
 use Maatwebsite\Excel\Validators\Failure as Failure;
 use PhpParser\Node\Stmt\TryCatch;
 use Throwable;
 
-class TeacherImport implements ToModel, WithHeadingRow,SkipsEmptyRows,SkipsOnError,SkipsOnFailure,WithValidation
+class TeacherImport implements ToModel, WithHeadingRow,SkipsEmptyRows,SkipsOnError,SkipsOnFailure,WithValidation,WithChunkReading
 {
     use Importable,SkipsErrors,SkipsFailures;
     /**
@@ -52,6 +53,10 @@ class TeacherImport implements ToModel, WithHeadingRow,SkipsEmptyRows,SkipsOnErr
         ];
     }
 
+    public function chunkSize(): int
+    {
+        return 200;
+    }
 
     
 }

@@ -14,7 +14,9 @@ use Maatwebsite\Excel\Concerns\SkipsOnFailure;
 use Maatwebsite\Excel\Concerns\WithValidation;
 use App\Models\Department;
 use Illuminate\Validation\Rule;
-class StudentImport implements ToModel, WithHeadingRow,SkipsEmptyRows,SkipsOnError,SkipsOnFailure,WithValidation
+use Maatwebsite\Excel\Concerns\WithChunkReading;
+
+class StudentImport implements ToModel, WithHeadingRow,SkipsEmptyRows,SkipsOnError,SkipsOnFailure,WithValidation, WithChunkReading
 {
     use Importable,SkipsErrors,SkipsFailures;
     /**
@@ -48,5 +50,10 @@ class StudentImport implements ToModel, WithHeadingRow,SkipsEmptyRows,SkipsOnErr
             "*.department_id"=>["required","integer",Rule::in($department_ids)],
             
         ];
+    }
+
+    public function chunkSize(): int
+    {
+        return 200;
     }
 }
