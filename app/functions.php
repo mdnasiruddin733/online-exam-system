@@ -1,6 +1,8 @@
 <?php
 
 use App\Models\Department;
+use App\Models\Student;
+use App\Models\Teacher;
 use Illuminate\Support\Facades\Auth;
 function guard(){
     if(Auth::guard('admin')->check())
@@ -24,4 +26,16 @@ function upload($image,$folder,$prev_image=""){
 
 function departments(){
     return Department::latest()->get();
+}
+
+function countStudents(){
+    return Student::count();
+}
+
+function countTeachers(){
+    return Teacher::count();
+}
+
+function countDepartments(){
+    return Department::count();
 }

@@ -98,7 +98,7 @@
                     <button type="submit" class="btn btn-primary btn-block mb-4">Register</button>
                    
                     <div class="text-center">
-                        <p>Already registered? <a href="{{route('login.student')}}">Sign in</a></p>
+                        <p>Already registered? <a href="{{route('login')}}">Sign in</a></p>
                     </div>
                 </form>
             </div>

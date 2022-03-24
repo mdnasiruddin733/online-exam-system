@@ -16,8 +16,8 @@
                 <ul class="navbar-nav my-lg-0">
 
                     @auth
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="{{asset(auth()->user()->image)}}" alt="user" class="profile-pic m-r-10" />{{auth()->user()->name}}</a>
+                    <li class="nav-item ">
+                        <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark" href="{{route(guard().'.profile')}}"  aria-haspopup="true" aria-expanded="false"><img src="{{asset(auth()->user()->image)}}" alt="user" class="profile-pic m-r-10" />{{auth()->user()->name}}</a>
                     </li>
                     @endauth
                 </ul>

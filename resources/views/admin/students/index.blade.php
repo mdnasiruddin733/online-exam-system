@@ -7,8 +7,11 @@
 <div class="row">
 
     <div class="col-lg-12 col-xlg-12 col-md-12">
-        <div class="card">
-            <div class="card-header"><a href="{{route('admin.student.create')}}" class="btn btn-success">Create New Student</a></div>
+        <div class="card p-3">
+            <div class="card-header text-center">
+                <a href="{{route('admin.student.create')}}" class="btn btn-success">Create New Student</a>
+                <a href="{{route('admin.import.student')}}" class="btn btn-danger">Import From Excell</a>
+            </div>
             <div class="card-block table-responsive text-center">
                 <table class="table table-bordered" style="font-size:14px;" id="data-table">
                     <thead>

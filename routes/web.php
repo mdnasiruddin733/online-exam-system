@@ -1,5 +1,6 @@
 <?php
 
+use App\Exports\TeacherExport;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
@@ -11,6 +12,9 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\ManageStudentController;
 use App\Http\Controllers\CourseController;
+use App\Http\Controllers\ImportController;
+use Maatwebsite\Excel\Facades\Excel;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -23,17 +27,18 @@ use App\Http\Controllers\CourseController;
 */
 
 Route::get('/', function () {
+     
     return redirect(route('login.student'));
 });
 Auth::routes();
 
 
-Route::get("/login/student",[LoginController::class,"showStudentLoginForm"])->name("login.student");
+Route::get("/login",[LoginController::class,"showStudentLoginForm"])->name("login");
 Route::get("/login/teacher",[LoginController::class,"showTeacherLoginForm"])->name("login.teacher");
 Route::get("/login/admin",[LoginController::class,"showAdminLoginForm"])->name("login.admin");
 
 
-Route::post("/login/student",[LoginController::class,"studentLogin"])->name("login.student");
+Route::post("/login",[LoginController::class,"studentLogin"])->name("login.student");
 Route::post("/login/teacher",[LoginController::class,"teacherLogin"])->name("login.teacher");
 Route::post("/login/admin",[LoginController::class,"adminLogin"])->name("login.admin");
 
@@ -75,6 +80,16 @@ Route::group(["middleware"=>["auth:admin"],"as"=>"admin.","prefix"=>"/admin"],fu
     Route::get("/student/edit/{id}",[ManageStudentController::class,"edit"])->name("student.edit");
     Route::post("/student/update",[ManageStudentController::class,"update"])->name("student.update");
     Route::get("/student/delete/{id}",[ManageStudentController::class,"delete"])->name("student.delete");
+
+    /*============================= Exports and Imports ==============================*/
+
+    Route::get("/import/teacher",[ImportController::class,"uploadTeacherExcell"])->name("import.teacher");
+    Route::post("/import/teacher",[ImportController::class,"importTeachers"])->name("import.teacher");
+
+    Route::get("/import/student",[ImportController::class,"uploadStudentExcell"])->name("import.student");
+    Route::post("/import/student",[ImportController::class,"importStudents"])->name("import.student");
+
+
 });
 
 /*=============================Student Routes==============================*/
