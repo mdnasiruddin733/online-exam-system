@@ -19,9 +19,13 @@
                         
                         @teacher
                         <li> 
-                            <a class="waves-effect waves-dark" href="{{route("teacher.course.index")}}" aria-expanded="false"><i class="mdi mdi-school"></i><span class="hide-menu">Courses</span></a>
+                            <a class="waves-effect waves-dark" href="{{route("teacher.course.index")}}" aria-expanded="false"><i class="mdi mdi-book"></i><span class="hide-menu">Courses</span></a>
+                        </li>
+                        <li> 
+                            <a class="waves-effect waves-dark" href="{{route("teacher.exam.index")}}" aria-expanded="false"><i class="mdi mdi-pen"></i><span class="hide-menu">Exams</span></a>
                         </li>
                         @endteacher
+
                         @student
                         <li> 
                             <a class="waves-effect waves-dark" href="{{route("student.course.index")}}" aria-expanded="false"><i class="mdi mdi-school"></i><span class="hide-menu">My Courses</span></a>

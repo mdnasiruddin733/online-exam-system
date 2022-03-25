@@ -19,4 +19,8 @@ class Teacher extends  Authenticatable
     public function courses(){
         return $this->hasMany(Course::class);
     }
+
+    public function exams(){
+        return $this->hasMany(Exam::class);
+    }
 }

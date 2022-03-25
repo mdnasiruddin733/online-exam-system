@@ -53,6 +53,7 @@
   rel="stylesheet"
 />
 @yield("styles")
+@livewireStyles
 </head>
 
 <body class="fix-header fix-sidebar card-no-border">
@@ -133,6 +134,7 @@
     <!-- ============================================================== -->
     <!-- All Jquery -->
     <!-- ============================================================== -->
+    @livewireScripts
     <script src="{{asset('backend')}}/assets/plugins/jquery/jquery.min.js"></script>
     <!-- Bootstrap tether Core JavaScript -->
     <script src="{{asset('backend')}}/assets/plugins/bootstrap/js/tether.min.js"></script>

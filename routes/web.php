@@ -1,9 +1,8 @@
 <?php
 
-use App\Exports\TeacherExport;
+
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Auth\LoginController;
-use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\DepartmentController;
 use App\Http\Controllers\ManageTeacherController;
 use App\Http\Controllers\StudentController;
@@ -13,7 +12,8 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\ManageStudentController;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\ImportController;
-use Maatwebsite\Excel\Facades\Excel;
+use Illuminate\Http\Request;
+use App\Http\Controllers\ExamController;
 
 /*
 |--------------------------------------------------------------------------
@@ -127,4 +127,21 @@ Route::group(["middleware"=>["auth:teacher"],"as"=>"teacher.","prefix"=>"/teache
     Route::get("/course/enrolled-students/{course_id}",[CourseController::class,"showEnrolledStudents"])->name("course.enrolled-students");
     Route::get("/course/remove-enrollment/{course_id}/{student_id}",[CourseController::class,"removeEnrollment"])->name("course.remove-enrollment");
     Route::get("/course/remove-all-enrollment/{course_id}/",[CourseController::class,"removeAllEnrollment"])->name("course.remove-all-enrollment");
+
+    /*=============================Exam CRUDs by teacher==============================*/
+    Route::get("/exams",[ExamController::class,"index"])->name("exam.index");
+    Route::get("/exam/create",[ExamController::class,"create"])->name("exam.create");
+    Route::post("/exam/store",[ExamController::class,"store"])->name("exam.store");
+    Route::get("/exam/edit/{exam_id}",[ExamController::class,"edit"])->name("exam.edit");
+    Route::post("/exam/update",[ExamController::class,"update"])->name("exam.update");
+    Route::get("/exam/delete/{id}",[ExamController::class,"delete"])->name("exam.delete");
+
+    /*=============================Question Related CRUDs by teacher==============================*/
+    Route::get("/exam/questions/create/{exam_id}",[ExamController::class,"createQuestion"])->name("exam.create-questions");
+
 });
+
+
+Route::post("/another-tab-open",function(Request $req){
+    return response()->json(["email"=>$req->email]);
+})->name("another-tab-open");
