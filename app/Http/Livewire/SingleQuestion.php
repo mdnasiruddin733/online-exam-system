@@ -7,10 +7,14 @@ use App\Models\Option;
 class SingleQuestion extends Component
 {
     public $question,$index,$option,$correct=0,$options=[];
+    protected $listeners=["optionRemoved"];
     protected $rules=[
         "option"=>"required|string",
     ];
 
+    public function optionRemoved(){
+       
+    }
     public function updated($value)
     {
         $this->validateOnly($value,$this->rules);
@@ -35,5 +39,10 @@ class SingleQuestion extends Component
         $option->save();
         $this->options[]=$option;
         $this->reset(["option","correct"]);
+    }
+
+    public function remove(){
+        $this->question->delete();
+        $this->emitTo("create-questions","questionDeleted");
     }
 }

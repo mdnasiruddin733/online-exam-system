@@ -15,6 +15,8 @@ class CreateQuestions extends Component
         "negative_marks"=>"required"
     ];
 
+    protected $listeners=["questionDeleted"];
+    public function questionDeleted(){}
     public function updated($value)
     {
         $this->validateOnly($value,$this->rules);
