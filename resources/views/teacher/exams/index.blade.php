@@ -19,9 +19,10 @@
                      <p><strong>End Time:</strong><span class="pl-2">{{date("d M, Y || H:iA",strtotime($exam->ended_at))}}</span></p>
                 </div>
                 <div class="card-footer text-center">
+                   
                     <a href="{{route('teacher.exam.create-questions',$exam->id)}}" class="btn btn-success wave-effects">Assign Questions</a>
-                    <a href="{{route('teacher.exam.edit',$exam->id)}}" class="btn btn-warning wave-effects">Edit</a>
-                    <button class="btn btn-danger wave-effects" onclick="confirm('Do you want to delete it?')? location.href='{{route('teacher.exam.delete',$exam->id)}}':''">Delete</button>
+                    <a href="{{route('teacher.exam.edit',$exam->id)}}" class="btn btn-warning wave-effects"><i class="fas fa-pen"></i></a>
+                    <button class="btn btn-danger wave-effects" onclick="confirm('Do you want to delete it?')? location.href='{{route('teacher.exam.delete',$exam->id)}}':''"><i class="fas fa-trash-o"></i></button>
                     
                 </div>
             </div>

@@ -138,6 +138,9 @@ Route::group(["middleware"=>["auth:teacher"],"as"=>"teacher.","prefix"=>"/teache
 
     /*=============================Question Related CRUDs by teacher==============================*/
     Route::get("/exam/questions/create/{exam_id}",[ExamController::class,"createQuestion"])->name("exam.create-questions");
+    Route::get("/exam/questions/import/{exam_id}",[ExamController::class,"importQuestion"])->name("exam.import-questions");
+
+    Route::post("/import/questions",[ImportController::class,"uploadQuestion"])->name("import.questions");
 
 });
 

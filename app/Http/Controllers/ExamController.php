@@ -88,4 +88,8 @@ class ExamController extends Controller
          $exam=Exam::where("teacher_id",Auth::id())->where("id",$exam_id)->firstOrFail();
         return view("teacher.exams.questions.create",compact("exam"));
     }
+     public function importQuestion($exam_id){
+         $exam=Exam::where("teacher_id",Auth::id())->where("id",$exam_id)->firstOrFail();
+         return view("teacher.exams.questions.import",compact("exam"));
+    }
 }

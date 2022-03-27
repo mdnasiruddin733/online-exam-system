@@ -6,6 +6,9 @@
 @endsection
 @section('content')
 <div class="row">
+    <div class="com-md-12 text-center mb-2">
+         <a href="{{route('teacher.exam.import-questions',$exam->id)}}" class="btn btn-primary wave-effects">Import questions from Excel</a>
+    </div>
     @livewire("create-questions",["exam_id"=>$exam->id])
 </div>
 @endsection
