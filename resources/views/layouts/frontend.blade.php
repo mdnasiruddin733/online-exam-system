@@ -11,6 +11,7 @@
         <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet" />
         <!-- MDB -->
         <link href="{{asset('frontend')}}/assets/css/mdb.min.css" rel="stylesheet" />
+       
         <title>Document</title>
     </head>
 
@@ -24,6 +25,18 @@
         </div>
 
         <script type="text/javascript" src="{{asset('frontend')}}/assets/js/mdb.min.js"></script>
+         <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+        <script src="{{asset('frontend/js/ripples.js')}}"></script>
+        <script>
+           $(document).ready(function(){
+               $('body').ripples({
+                resolution: 512,
+                dropRadius: 20,
+                perturbance: 0.04,
+                });
+           })
+        </script>
+        
     </body>
 
 </html>

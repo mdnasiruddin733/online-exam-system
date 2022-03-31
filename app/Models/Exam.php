@@ -19,6 +19,12 @@ class Exam extends Model
     }
 
     public function questions(){
-        return $this->hasMany(Exam::class);
+        return $this->hasMany(Question::class);
     }
+
+    public function results(){
+        return $this->hasMany(Result::class);
+    }
+
+    
 }

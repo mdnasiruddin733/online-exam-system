@@ -19,4 +19,10 @@ class Student extends  Authenticatable
     public function courses(){
         return $this->belongsToMany(Course::class);
     }
+
+    public function results(){
+        return $this->hasMany(Result::class);
+    }
+
+    
 }

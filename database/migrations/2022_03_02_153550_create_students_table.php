@@ -23,6 +23,7 @@ return new class extends Migration
             $table->foreign("department_id")->references("id")->on("departments")->onDelete(("cascade"));
             $table->string("roll");
             $table->string("password");
+            $table->rememberToken();
             $table->timestamps();
         });
     }

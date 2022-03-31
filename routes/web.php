@@ -3,6 +3,7 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\CheckController;
 use App\Http\Controllers\DepartmentController;
 use App\Http\Controllers\ManageTeacherController;
 use App\Http\Controllers\StudentController;
@@ -14,6 +15,7 @@ use App\Http\Controllers\CourseController;
 use App\Http\Controllers\ImportController;
 use Illuminate\Http\Request;
 use App\Http\Controllers\ExamController;
+use App\Http\Controllers\StudentExamController;
 
 /*
 |--------------------------------------------------------------------------
@@ -101,6 +103,13 @@ Route::group(["middleware"=>["auth:student"],"as"=>"student.","prefix"=>"/studen
     Route::post("/profile/change-password",[StudentController::class,"changePassword"])->name("change-password");
     
     Route::get("/courses",[CourseController::class,"showMyCourses"])->name("course.index");
+
+    Route::get("/exam/{course_id}",[StudentExamController::class,"index"])->name("exam.index");
+    Route::get("/exam/participate/{exam_id}",[StudentExamController::class,"participate"])->name("exam.participate")->middleware("exam");
+    Route::post("/exam/submit",[StudentExamController::class,"submit"])->name("exam.submit");
+    Route::get("/exam/result/{exam_id}",[StudentExamController::class,"result"])->name("exam.result");
+
+    Route::post("/another-tab-open", [CheckController::class,"check"])->name("another-tab-open");
 });
 
 
@@ -143,8 +152,3 @@ Route::group(["middleware"=>["auth:teacher"],"as"=>"teacher.","prefix"=>"/teache
     Route::post("/import/questions",[ImportController::class,"uploadQuestion"])->name("import.questions");
 
 });
-
-
-Route::post("/another-tab-open",function(Request $req){
-    return response()->json(["email"=>$req->email]);
-})->name("another-tab-open");

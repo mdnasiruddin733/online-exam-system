@@ -3,6 +3,7 @@
 use App\Models\Department;
 use App\Models\Student;
 use App\Models\Teacher;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Auth;
 function guard(){
     if(Auth::guard('admin')->check())
@@ -38,4 +39,28 @@ function countTeachers(){
 
 function countDepartments(){
     return Department::count();
+}
+
+
+function timeDiff($start,$end){
+    $start= Carbon::parse($start);
+    $end= Carbon::parse($end);
+    return $end->diffInMinutes($start); 
+}
+
+
+function fullmarks($exam){
+    $marks=0.0;
+    foreach($exam->questions as $key=>$question){
+        $marks+=$question->marks;
+    }
+
+    return $marks;
+}
+
+
+function timeRemains($end){
+     $start= Carbon::parse(now());
+     $end= Carbon::parse($end);
+    return $end->diffInSeconds($start)*1000; 
 }
