@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\ResultEvent;
 use App\Models\Course;
 use App\Models\Exam;
 use Illuminate\Support\Facades\Auth;

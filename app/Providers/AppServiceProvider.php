@@ -33,5 +33,12 @@ class AppServiceProvider extends ServiceProvider
         Blade::if('student', function () {
             return Auth::guard("student")->check();
         });
+        Blade::if("started",function($exam){
+           return strtotime($exam->started_at) < strtotime(now());
+        });
+        Blade::if("ended",function($exam){
+           return strtotime($exam->ended_at) < strtotime(now());
+        });
+       
     }
 }

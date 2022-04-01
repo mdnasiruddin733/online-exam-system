@@ -26,17 +26,7 @@
 
         <script type="text/javascript" src="{{asset('frontend')}}/assets/js/mdb.min.js"></script>
          <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
-        <script src="{{asset('frontend/js/ripples.js')}}"></script>
-        <script>
-           $(document).ready(function(){
-               $('body').ripples({
-                resolution: 512,
-                dropRadius: 20,
-                perturbance: 0.04,
-                });
-           })
-        </script>
-        
+   
     </body>
 
 </html>

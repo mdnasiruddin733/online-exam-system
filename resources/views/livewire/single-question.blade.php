@@ -10,6 +10,11 @@
         </div>
     </div>
     <div class="card-body">
+        <div class="row mb-3">
+            <div class="col-6">
+               Marks: {{$question->marks}}&nbsp;||&nbsp;Negative Marks: {{$question->negative_marks}}
+            </div>
+        </div>
         <div class="row mb-2">
                 <div class="col-md-6 col-12 mb-2">
                     <input type="text" class="form-control @error('option') is-invalid @enderror" placeholder="Option text" wire:model="option" wire:model="option">

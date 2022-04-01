@@ -61,27 +61,3 @@
 @endsection
 
 
-@section("scripts")
-<script>
-  document.addEventListener("visibilitychange",function(){
-    if(document.visibilityState=="visible"){
-      
-      
-    }else{
-       $.ajax({
-         url:"{{route('another-tab-open')}}",
-         method:"POST",
-         dataType:"json",
-         data:{
-           "_token":"{{csrf_token()}}",
-           "email":"{{auth()->user()->email}}"
-         },
-         success:function(res){
-           alert("Your submission will not be considered as you left this tab")
-         }
-       })
-    }
-  })
-
-</script>
-@endsection

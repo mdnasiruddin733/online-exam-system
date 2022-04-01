@@ -17,7 +17,7 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
+    <script src="{{ asset('js/app.js') }}"></script>
 
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="{{asset('backend')}}/assets/images/favicon.png">
@@ -152,14 +152,7 @@
     <!-- ============================================================== -->
     <!-- This page plugins -->
     <!-- ============================================================== -->
-    <!-- chartist chart -->
-    <script src="{{asset('backend')}}/assets/plugins/chartist-js/dist/chartist.min.js"></script>
-    <script src="{{asset('backend')}}/assets/plugins/chartist-plugin-tooltip-master/dist/chartist-plugin-tooltip.min.js"></script>
-    <!--c3 JavaScript -->
-    <script src="{{asset('backend')}}/assets/plugins/d3/d3.min.js"></script>
-    <script src="{{asset('backend')}}/assets/plugins/c3-master/c3.min.js"></script>
-    <!-- Chart JS -->
-    <script src="{{asset('backend')}}/js/dashboard1.js"></script>
+    
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js" integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
    <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
@@ -203,6 +196,13 @@
     >
     </script>
     @yield('scripts')
+    
+    <script>
+        window.Echo.private(`result.{{auth()->user()->id}}`)
+            .listen('ResultEvent', (event) => {
+                window.livewire.emit("newSubmission");
+        });
+    </script>
 
 
 </body>

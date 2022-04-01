@@ -18,7 +18,8 @@ class AuthenticateExam
     public function handle(Request $request, Closure $next)
     {
         $exam_id=$request->route('exam_id');
-        $student=Exam::find($exam_id)->course->students->where("id",Auth::id())->firstOrFail();
+        $exam=Exam::findOrFail($exam_id);
+        $student=$exam->course->students->where("id",Auth::id())->firstOrFail();
         if(empty($student)){
             abort(403);
         }

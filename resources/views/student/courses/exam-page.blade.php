@@ -1,12 +1,13 @@
 
 @php 
     $minutes=timeDiff($exam->started_at,$exam->ended_at);
+    $seconds=$minutes*60;
     $hours=0;
     if($minutes>60){
         $hours=floor($minutes/60);
         $minutes=$minutes%60;
     }
-    $seconds=$minutes*60;
+    
 @endphp
 
 @extends("layouts.app2")
@@ -28,7 +29,7 @@
                         {{-- Countdown clock starts --}}
                         <div class="countdown countdown-container container">
                             <div class="clock row">
-                                <div class="clock-item clock-days countdown-time-value col-sm-6 col-md-3" style="@if($seconds<86400) visibility:hidden; margin-left:-50px; @endif">
+                                <div class="clock-item clock-days countdown-time-value col-sm-6 col-md-3" style="@if($seconds < 86400) visibility:hidden; margin-left:-50px; @endif">
                                     <div class="wrap">
                                         <div class="inner">
                                             <div id="canvas-days" class="clock-canvas"></div>
@@ -42,7 +43,7 @@
                                 </div><!-- /.clock-item -->
                                 
                                 
-                                <div class="clock-item clock-hours countdown-time-value col-sm-6 col-md-3" style="@if($seconds<3600) visibility:hidden; margin-left:-50px; @endif">
+                                <div class="clock-item clock-hours countdown-time-value col-sm-6 col-md-3" style="@if($seconds < 3600) visibility:hidden; margin-left:-50px; @endif">
                                     <div class="wrap">
                                         <div class="inner">
                                             <div id="canvas-hours" class="clock-canvas"></div>
@@ -149,6 +150,7 @@
 <script src="{{asset('frontend/js/jquery.min.js')}}"></script>
 <script src="{{asset('frontend/js/kinetic.js')}}"></script>
 <script src="{{asset('frontend/js/final_countdown.min.js')}}"></script>
+
 <script>
 
             

@@ -1,26 +1,22 @@
 
 
 @php 
-$rank=0;
 $count=0;
 $my_answers=json_decode($result->my_answers,true);
 $right_answers=json_decode($result->right_answers,true);
 @endphp
 
-@extends("layouts.app")
+@extends('layouts.app')
 @section("breadcrumb")
-        <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
-        <li class="breadcrumb-item"><a href="javascript:void(0)">{{$result->exam->course->name}}</a></li>
-        <li class="breadcrumb-item"><a href="javascript:void(0)">{{$result->exam->title}}</a></li>
-        <li class="breadcrumb-item active">Result</li>
+    <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
+    <li class="breadcrumb-item active">Courses</li>
 @endsection
-@section("content")
-<button onclick="savePDF()" class="btn btn-success m-3">Save result as pdf</button>
-<div class="container" id="container">
-    <div class="row">
+
+@section('content')
+<div class="row">
     <div class="col-md-6">
         <div class="card">
-            <div class="card-header text-center bg-primary text-light">My Information</div>
+            <div class="card-header text-center bg-primary text-light">Student's Information</div>
             <div class="card-body">
                 <p><strong>Name:</strong><span class="mx-2">{{$result->student->name}}</span></p>
                 <p><strong>Email:</strong><span class="mx-2">{{$result->student->email}}</span></p>
@@ -30,7 +26,7 @@ $right_answers=json_decode($result->right_answers,true);
     </div>
      <div class="col-md-6">
         <div class="card">
-            <div class="card-header text-center bg-primary text-light">My Result</div>
+            <div class="card-header text-center bg-primary text-light">Student's Result</div>
             <div class="card-body">
                 <p><strong>Aquired Marks:</strong><span class="mx-2">{{$result->marks}}</span></p>
                 <p><strong>Full Marks:</strong><span class="mx-2">{{array_sum($result->exam->questions->pluck('marks')->toArray())}}</span></p>
@@ -87,28 +83,10 @@ $right_answers=json_decode($result->right_answers,true);
     </div>
     @endforeach
 </div>
-</div>
 @endsection
 
-
 @section("scripts")
-<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js" integrity="sha512-GsLlZN/3F2ErC5ifS5QtgpiJtWd43JWSuIgh7mbzZ8zBps+dvLusV+eNQATqgA/HdeKFVgA5v3S/cIrLF7QnIg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script>
-   function savePDF(){
-        var element = document.getElementById('container');
-        var opt = {
-            margin:       0.2,
-            filename:     'my-result.pdf',
-            image:        { type: 'jpeg', quality: 0.98 },
-            html2canvas:  { scale: 2 },
-            jsPDF:        { unit: 'in', format: 'a4', orientation: 'portrait' }
-        };
-
-        // New Promise-based usage:
-        html2pdf().set(opt).from(element).save();
-
-        // Old monolithic-style usage:
-        html2pdf(element, opt);
-   }
+   
 </script>
 @endsection

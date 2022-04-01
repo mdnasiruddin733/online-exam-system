@@ -15,6 +15,7 @@ use App\Http\Controllers\CourseController;
 use App\Http\Controllers\ImportController;
 use Illuminate\Http\Request;
 use App\Http\Controllers\ExamController;
+use App\Http\Controllers\ResultController;
 use App\Http\Controllers\StudentExamController;
 
 /*
@@ -108,7 +109,6 @@ Route::group(["middleware"=>["auth:student"],"as"=>"student.","prefix"=>"/studen
     Route::get("/exam/participate/{exam_id}",[StudentExamController::class,"participate"])->name("exam.participate")->middleware("exam");
     Route::post("/exam/submit",[StudentExamController::class,"submit"])->name("exam.submit");
     Route::get("/exam/result/{exam_id}",[StudentExamController::class,"result"])->name("exam.result");
-
     Route::post("/another-tab-open", [CheckController::class,"check"])->name("another-tab-open");
 });
 
@@ -148,7 +148,11 @@ Route::group(["middleware"=>["auth:teacher"],"as"=>"teacher.","prefix"=>"/teache
     /*=============================Question Related CRUDs by teacher==============================*/
     Route::get("/exam/questions/create/{exam_id}",[ExamController::class,"createQuestion"])->name("exam.create-questions");
     Route::get("/exam/questions/import/{exam_id}",[ExamController::class,"importQuestion"])->name("exam.import-questions");
-
     Route::post("/import/questions",[ImportController::class,"uploadQuestion"])->name("import.questions");
 
+
+    Route::get("/exam/result/{exam_id}",[ResultController::class,"viewResult"])->name("exam.result");
+    Route::get("/exam/show/result/{result_id}/{rank}",[ResultController::class,"resultDetails"])->name("exam.show.result");
+
+    Route::get("/export/result/{exam_id}",[ResultController::class,"exportResult"])->name("export.result");
 });
