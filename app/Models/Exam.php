@@ -25,6 +25,8 @@ class Exam extends Model
     public function results(){
         return $this->hasMany(Result::class);
     }
-
+    public function checks(){
+        return $this->hasMany(Check::class);
+    }
     
 }

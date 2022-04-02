@@ -30,4 +30,9 @@ class ResultController extends Controller
         $exam=Exam::where("teacher_id",Auth::id())->where("id",$exam_id)->firstOrFail();
         return Excel::download(new ResultExport($exam_id),"result.xlsx");
     }
+
+    public function monitorExam($exam_id){
+        $exam=Exam::where("teacher_id",Auth::id())->where("id",$exam_id)->firstOrFail();
+        return view("teacher.exams.monitor",compact('exam'));
+    }
 }

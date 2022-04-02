@@ -15,7 +15,10 @@ return new class extends Migration
     {
         Schema::create('checks', function (Blueprint $table) {
             $table->id();
-            $table->string("email");
+            $table->unsignedBigInteger("exam_id");
+            $table->foreign("exam_id")->references("id")->on("exams")->onDelete("cascade");
+            $table->unsignedBigInteger("student_id");
+            $table->foreign("student_id")->references("id")->on("students")->onDelete("cascade");
             $table->integer("count");
             $table->timestamps();
         });

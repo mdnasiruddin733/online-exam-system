@@ -9,4 +9,11 @@ class Check extends Model
 {
     use HasFactory;
     protected $guarded=[];
+    public function exam(){
+        return $this->belongsTo(Exam::class);
+    }
+
+    public function student(){
+       return $this->belongsTo(Student::class);
+    }
 }

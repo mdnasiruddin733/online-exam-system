@@ -110,6 +110,8 @@ Route::group(["middleware"=>["auth:student"],"as"=>"student.","prefix"=>"/studen
     Route::post("/exam/submit",[StudentExamController::class,"submit"])->name("exam.submit");
     Route::get("/exam/result/{exam_id}",[StudentExamController::class,"result"])->name("exam.result");
     Route::post("/another-tab-open", [CheckController::class,"check"])->name("another-tab-open");
+
+    Route::get("/exam/download/{exam_id}",[StudentExamController::class,"downloadQuestion"])->name("exam.download");
 });
 
 
@@ -153,6 +155,7 @@ Route::group(["middleware"=>["auth:teacher"],"as"=>"teacher.","prefix"=>"/teache
 
     Route::get("/exam/result/{exam_id}",[ResultController::class,"viewResult"])->name("exam.result");
     Route::get("/exam/show/result/{result_id}/{rank}",[ResultController::class,"resultDetails"])->name("exam.show.result");
-
     Route::get("/export/result/{exam_id}",[ResultController::class,"exportResult"])->name("export.result");
+
+    Route::get("/exam/monitor/{exam_id}",[ResultController::class,"monitorExam"])->name("exam.monitor");
 });

@@ -38,6 +38,7 @@
                     @else 
                     <span class="text-danger">Exam ended and you didn't participate</span>
                     @endif
+                    <p class="my-2"><a href="{{route("student.exam.download", $exam->id)}}" class="btn btn-default">Download Question</a></p>
                 @endif
                 
 

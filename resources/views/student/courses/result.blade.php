@@ -1,7 +1,6 @@
 
 
 @php 
-$rank=0;
 $count=0;
 $my_answers=json_decode($result->my_answers,true);
 $right_answers=json_decode($result->right_answers,true);
@@ -99,16 +98,12 @@ $right_answers=json_decode($result->right_answers,true);
         var opt = {
             margin:       0.2,
             filename:     'my-result.pdf',
-            image:        { type: 'jpeg', quality: 0.98 },
+            image:        { type: 'jpeg', quality: 1 },
             html2canvas:  { scale: 2 },
             jsPDF:        { unit: 'in', format: 'a4', orientation: 'portrait' }
         };
 
-        // New Promise-based usage:
         html2pdf().set(opt).from(element).save();
-
-        // Old monolithic-style usage:
-        html2pdf(element, opt);
    }
 </script>
 @endsection

@@ -17,7 +17,7 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
+    <script src="{{ asset('js/app.js') }}"></script>
 
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="{{asset('backend')}}/assets/images/favicon.png">
@@ -100,8 +100,13 @@
 		}
 	</script>
 
-    @yield('scripts')
-
+  @yield('scripts')
+  <script>
+     window.Echo.private(`warn.{{auth()->user()->id}}`)
+            .listen('WarnEvent', (event) => {
+               alert(event.message);
+        });
+  </script>
 
 </body>
 

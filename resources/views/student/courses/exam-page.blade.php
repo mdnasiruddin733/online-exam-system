@@ -160,7 +160,7 @@
            $.ajax({
                url:"{{route('student.another-tab-open')}}",
                method:"post",
-               data:{"_token":"{{csrf_token()}}"},
+               data:{"_token":"{{csrf_token()}}","exam_id":"{{$exam->id}}"},
                dataType:"json",
                success:function(res){
                   $("#warning").html(`<p><strong>you have already left this page ${res.count} times</strong></p>`)

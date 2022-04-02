@@ -2,14 +2,16 @@
 
 namespace App\Http\Controllers;
 
-use App\Events\ResultEvent;
-use App\Models\Course;
+
+use App\Exports\QuestionExport;
 use App\Models\Exam;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Student;
 use Illuminate\Support\ItemNotFoundException;
 use Illuminate\Http\Request;
 use App\Models\Result;
+
+
 
 class StudentExamController extends Controller
 {
@@ -101,9 +103,31 @@ class StudentExamController extends Controller
         $exam=Exam::findOrFail($exam_id);
         $result=Auth::user()->results->where("exam_id",$exam_id)->first();
         if($result){
-             return view("student.courses.result",compact('result'));
+            $rank=0;
+             $results=$exam->results->sortByDesc('marks');
+             foreach($results as $res){
+                 $rank++;
+                 if($res->marks===$result->marks){  
+                     break;
+                 }
+             }
+             return view("student.courses.result",compact('result','rank'));
         }else{
             return back();
+        }
+    }
+
+    public function downloadQuestion($exam_id){
+
+
+        $exam=Exam::findOrFail($exam_id);
+        if(Auth::user()->courses->contains('id',$exam->course_id) && strtotime($exam->ended_at)<strtotime(now())){
+            
+            return view("student.courses.questions-download",compact('exam'));
+        
+        
+        }else{
+            abort(403);
         }
     }
 }
