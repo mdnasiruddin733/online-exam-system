@@ -9,7 +9,7 @@ use Livewire\Component;
 class Monitor extends Component
 {
 
-    public $exam,$monitors;
+    public $exam,$monitors,$message;
 
     protected $listeners=["studentLeftExam"];
 
@@ -26,6 +26,6 @@ class Monitor extends Component
     }
 
     public function warn($student_id){
-        event(new WarnEvent($student_id));
+        event(new WarnEvent($student_id,$this->message));
     }
 }

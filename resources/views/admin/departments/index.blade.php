@@ -1,6 +1,7 @@
 @extends('layouts.app')
+@section("departments","active")
 @section("breadcrumb")
-    <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
+    <li class="breadcrumb-item"><a href="{{route('dashboard.admin')}}">Home</a></li>
     <li class="breadcrumb-item active">Departments</li>
 @endsection
 @section('content')

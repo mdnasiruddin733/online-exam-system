@@ -22,9 +22,14 @@ class WarnEvent implements ShouldBroadcastNow
      */
 
     public $student_id,$message;
-    public function __construct($student_id)
+    public function __construct($student_id,$message)
     {
-        $this->message="You are warned by your examiner not to leave this page.";
+        if(is_null($message)){
+            $this->message="You are warned by your examiner not to leave this page.";
+        }else{
+            $this->message=$message;
+        }
+        
         $this->student_id=$student_id;
     }
 

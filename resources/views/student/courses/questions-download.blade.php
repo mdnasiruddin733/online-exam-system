@@ -1,10 +1,11 @@
 
 
 @extends("layouts.app")
+@section("my-courses","active")
 @section("breadcrumb")
-        <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
-        <li class="breadcrumb-item"><a href="javascript:void(0)">{{$exam->course->name}}</a></li>
-        <li class="breadcrumb-item"><a href="javascript:void(0)">{{$exam->title}}</a></li>
+        <li class="breadcrumb-item"><a href="{{route('dashboard.student')}}">Home</a></li>
+        <li class="breadcrumb-item"><a href="{{route('student.course.index')}}">Courses</a></li>
+        <li class="breadcrumb-item"><a href="{{route('student.exam.index',$exam->course->id)}}">Exams</a></li>
         <li class="breadcrumb-item active">Questions</li>
 @endsection
 @section("content")

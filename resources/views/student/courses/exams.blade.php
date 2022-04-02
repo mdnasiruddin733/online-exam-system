@@ -1,7 +1,7 @@
 @extends('layouts.app')
+@section("my-courses","active")
 @section("breadcrumb")
-    <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
-    <li class="breadcrumb-item"><a href="javascript:void(0)">{{$course->name}}</a></li>
+    <li class="breadcrumb-item"><a href="{{route('dashboard.student')}}">Home</a></li>
     <li class="breadcrumb-item active">Exams</li>
      
 @endsection
@@ -38,7 +38,7 @@
                     @else 
                     <span class="text-danger">Exam ended and you didn't participate</span>
                     @endif
-                    <p class="my-2"><a href="{{route("student.exam.download", $exam->id)}}" class="btn btn-default">Download Question</a></p>
+                    <p class="my-2"><a href="{{route("student.exam.download", $exam->id)}}" class="btn btn-default">Show Question</a></p>
                 @endif
                 
 

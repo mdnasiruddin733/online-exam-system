@@ -11,6 +11,7 @@
 @endphp
 
 @extends("layouts.app2")
+@section("my-courses","active")
 @section('content')
 <div class="row">
     <div class="col-md-12 mb-2">

@@ -1,7 +1,9 @@
 @extends('layouts.app')
+@section("courses","active")
 @section("breadcrumb")
-    <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
-    <li class="breadcrumb-item active">Courses</li>
+    <li class="breadcrumb-item"><a href="{{route('dashboard.teacher')}}">Home</a></li>
+    <li class="breadcrumb-item"><a href="{{route('teacher.course.index')}}">Courses</a></li>
+    <li class="breadcrumb-item active">Add Student</li>
 @endsection
 @section('content')
 <div class="row">

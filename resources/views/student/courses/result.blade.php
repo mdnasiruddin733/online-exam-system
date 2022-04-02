@@ -7,10 +7,11 @@ $right_answers=json_decode($result->right_answers,true);
 @endphp
 
 @extends("layouts.app")
+@section("my-courses","active")
 @section("breadcrumb")
-        <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
-        <li class="breadcrumb-item"><a href="javascript:void(0)">{{$result->exam->course->name}}</a></li>
-        <li class="breadcrumb-item"><a href="javascript:void(0)">{{$result->exam->title}}</a></li>
+        <li class="breadcrumb-item"><a href="{{route('dashboard.student')}}">Home</a></li>
+        <li class="breadcrumb-item"><a href="{{route('student.course.index')}}">Courses</a></li>
+        <li class="breadcrumb-item"><a href="{{route('student.exam.index',$result->exam->course->id)}}">Exams</a></li>
         <li class="breadcrumb-item active">Result</li>
 @endsection
 @section("content")

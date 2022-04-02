@@ -11,8 +11,8 @@
         <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet" />
         <!-- MDB -->
         <link href="{{asset('frontend')}}/assets/css/mdb.min.css" rel="stylesheet" />
-       
-        <title>Document</title>
+       <link rel="icon" type="image/png" href="{{asset('img/favicon.png')}}">
+        <title>{{config('app.name')}}</title>
     </head>
 
     <body>

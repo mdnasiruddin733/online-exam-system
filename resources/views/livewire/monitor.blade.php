@@ -1,7 +1,15 @@
 <div>
   <div class="card">
-        <div class="card-header bg-primary text-light text-center">     
-            Students activity monitoring for {{$exam->title}}   
+        <div class="card-header bg-primary text-light">     
+           
+            <div class="row">
+                    <div class="col-md-6 text-left">
+                         Students activity monitoring for {{$exam->title}}
+                    </div>
+                    <div class="col-md-6 text-right">
+                        <input type="text" class="form-control" placeholder="Write warning message for students" wire:model="message">
+                    </div>
+            </div>   
         </div>
       <div class="card-body table-responsive">
         @if(count($monitors)>0)

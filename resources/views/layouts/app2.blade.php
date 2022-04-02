@@ -20,7 +20,7 @@
     <script src="{{ asset('js/app.js') }}"></script>
 
     <!-- Favicon icon -->
-    <link rel="icon" type="image/png" sizes="16x16" href="{{asset('backend')}}/assets/images/favicon.png">
+    <link rel="icon" type="image/png" href="{{asset('img/favicon.png')}}">
     <title>{{config("app.name")}}</title>
     <!-- Bootstrap Core CSS -->
     <link href="{{asset('backend')}}/assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
